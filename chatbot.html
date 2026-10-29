@@ -33,7 +33,9 @@
 
             return (
                 <div>
-                  {sender === "robot" && <img src="robot.jpeg" width ="50" alt=""/> }
+                  {sender === "robot" &&( // clean up to make every element on its line
+                    <img src="robot.jpeg" width ="50" alt=""/>
+                  )}
                 {message}
                   { sender ==="user" &&  <img src="image1.jpeg" width ="50" alt=""/> }
                   
@@ -52,19 +54,31 @@
                   </>    
                 );
             }
-            const app =( // barckets for claenup code not mandatory 
-               <>
-                  <ChatInput/>
-                  <ChatMessage message ="Hello chatbot" sender = "user"/>
-                  <ChatMessage message ="Hello , how can I help you today " sender = "robot"/>
-                  <ChatMessage message ="Can you get me today date? " sender = "user"/>
-                  <ChatMessage message ="Today is 29 October " sender = "robot"/>
-              </>
+
+            function App(){
+              return(
+                  <>
+                    <ChatInput/>
+                    <ChatMessage // clean up 
+                      message ="Hello chatbot" 
+                      sender = "user"
+                    />
+                    <ChatMessage message ="Hello , how can I help you today " sender = "robot"/>
+                    <ChatMessage message ="Can you get me today date? " sender = "user"/>
+                    <ChatMessage message ="Today is 29 October " sender = "robot"/>
+                </>
               );
+             }
+              
+            
+
+            // const app =( // barckets for claenup code not mandatory 
+              
+            //   );
 
 
       const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render(app); // anything in render will be dispalyed in the container
+      ReactDOM.createRoot(container).render(<App/>); // anything in render will be dispalyed in the container
     </script>
   </body>
 </html>
