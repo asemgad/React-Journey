@@ -70,7 +70,59 @@
               );
              }
               
+              // ex1 
+             function LoginForm() {
+              
+              return(
+                <>
+                 <div> <input placeholder = "Email" type="text"/></div>
+                     <div> <input placeholder = "Password" type="password"/></div>
+                      <button>Login</button>
+                      <button>Sign in </button>
+                  </>
+              );
+
+             }
+
+             function Login() {
+              
+                return (
+                    <>
+                      <p>hello , welcome to my website </p>
+                      <LoginForm/>
+                    </>
+                );
+             }
             
+              // ex2
+
+              function ProductDetails({price , type , discount}) {
+                return (
+                    <>
+                      <p>{type}</p>
+
+                      <p>Price :{price}</p>
+                     {discount > 0 ?  (<p>Discount Price : {discount}</p>) : (<p>this is me </p> )} 
+                       <button>Add to Cart</button>
+
+                   </>
+                );
+                
+              }
+
+
+
+              function ECommerce() {
+                return(
+                  <>
+                <ProductDetails price = "6" type = "Tennis balls"  discount ="3"/>
+
+                <ProductDetails price = "7.99" type = "Plain T-Shirt"/>
+             
+                  </>
+
+                 )
+              }
 
             // const app =( // barckets for claenup code not mandatory 
               
@@ -78,7 +130,7 @@
 
 
       const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render(<App/>); // anything in render will be dispalyed in the container
+      ReactDOM.createRoot(container).render(<ECommerce/>); // anything in render will be dispalyed in the container
     </script>
   </body>
 </html>
