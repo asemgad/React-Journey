@@ -1,0 +1,23 @@
+
+in react we use enhanced javascript called JSX = JavaScript XML
+same as javascript but we can write html directly in our js code
+
+Our browser does not understand JSX only native js so we use 
+bable library which will do this
+
+why to use react
+-Jsx let us find erros easily 
+- we can inser vlues in jsx elemtns 
+
+
+We are turning the webiste into components
+Component : peice of the website
+
+ /* {ChatInput()} */ this called the syntax of the component to make it easier with functions
+   /* <ChatInput></ChatInput> */
+      <ChatInput/>
+
+fragment <> </> group elemnts togther witout needing extra div
+
+props contains every attrs that we gave to the component
+it makes our components reusable

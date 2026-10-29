@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script> <!-- for websites and mobile phones -->
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script> <!-- for websites -->
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+
+          const shippingCost = 5 ; 
+          const produxtCost = 10 ; 
+
+          const div02 = (
+            <div>
+                <p>shipping cost = {shippingCost} $</p>
+                <p>product cost = {produxtCost} $</p>
+                <p>total cost = {shippingCost + produxtCost} $</p>
+              
+            </div>
+              );
+              const todayDate = dayjs().format('MMMM D')
+              console.log(todayDate)
+
+
+            const button01 = <button> click </button>; // jsx and bable will translate it
+            const paraghrapgh = <p> let us create </p> ;
+            const div =( // barckets for claenup code not mandatory 
+               <div>
+                  <button> click </button>
+                  <p> let us create {2 + 2} </p>
+              
+              </div>
+              );
+
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(div02); // anything in render will be dispalyed in the container
+    </script>
+  </body>
+</html>
