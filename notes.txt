@@ -21,3 +21,12 @@ fragment <> </> group elemnts togther witout needing extra div
 
 props contains every attrs that we gave to the component
 it makes our components reusable
+
+evenn handlers : run a function wehn we interact with the website 
+
+state : date that is connected to the html , 
+when we update this date , it will update the HTML
+
+in  React.useState if we update the data inside it the html will be upadated 
+
+in react we should not modify the date directly , we should create a copy and then modify the copy  

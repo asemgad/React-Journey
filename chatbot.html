@@ -109,13 +109,53 @@
                 );
             }
 
-            function App(){
-                    const chatMessages = [ // our data => array of objects
+
+            
+            function ChatMessages() {
+               const array  =   React.useState([ // our data => array of objects 
                       {message : "Hello chatbot" , sender : "user" , id : "id01"},
                       {message : "Hello , how can I help you today" , sender : "robot" , id : "id02"},
                       {message : "Can you get me today date?" , sender : "user" , id : "id03"},
                       {message : "Today is 29 October" , sender : "robot" , id : "id04"}
-                    ];
+                    ]);
+
+                const chatMessages = array[0] // the current value of chatmessages (the current date)
+                 const setChateMessages = array[1]     // updater function , returns funciton  
+
+
+
+              //  const chatMessages = ;
+
+                 function sendMessage() {
+                            // chatMessages.push({
+                            //   message : "test" , sender : "user" , id : crypto.randomUUID()
+                            // });
+
+                            setChateMessages([
+
+                            ...chatMessages , 
+                            {
+                              message : "test" , sender : "user" , id : crypto.randomUUID()
+                            }
+                            ]);
+                            console.log(chatMessages);
+                    
+                  }
+
+                    return ( 
+                      <>
+                      <button onClick = {sendMessage}>message</button>
+                       { chatMessages.map((chatMessage) => {
+                         return (
+                         <ChatMessage message = {chatMessage.message} sender = {chatMessage.sender} key = {chatMessage.id} />
+                       )
+                     })}
+                     </>
+
+                    );
+            }
+            function App(){
+                   
 
                     // const chatMessageComponents = chatMessages.map((chatMessage) => {
                     //   return (
@@ -126,12 +166,7 @@
                 return(
                   <>
                     <ChatInput/>
-                    
-                     { chatMessages.map((chatMessage) => {
-                         return (
-                         <ChatMessage message = {chatMessage.message} sender = {chatMessage.sender} id = {chatMessage.id} />
-                       )
-                     })}
+                    <ChatMessages/>
 
                 </>
               );
