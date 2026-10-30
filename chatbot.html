@@ -68,6 +68,11 @@
 
 
 
+
+
+              
+
+
           function ChatMessage({message , sender}) // the most popular way 
           {
           //  const message = props.message;
@@ -98,53 +103,73 @@
             );
           }
 
-          function ChatInput ()
+
+          function ChatInput ({chatMessages , setChatMessages})
             { 
+                  const [inputText , setInputText] = React.useState(''); // as the initial value will be ""
+                function SaveInputText(e) {
+                  setInputText(e.target.value);// so when this value changes the inputText will be udpated to the new data 
+                  // so setInputText is a func that upates inputText
+                  
+                }
+                function sendMessage() {
+                  console.log(inputText )
+
+                  setChateMessages([
+
+                            ...chatMessages , 
+                            {
+                              message : inputText , sender : "user" , id : crypto.randomUUID()
+                            }
+                            ]);
+                }
+
                 return ( // return one element and the ( needs to be with return at the same line
                 
                   <>
-                  <input placeholder ="send a message to chatbot" size ="30" type="text"/>
-                  <button>send</button>
+                  <input placeholder ="send a message to chatbot" size ="30" type="text" onChange = {SaveInputText}/>
+                  <button onClick = {sendMessage}>send</button>
                   </>    
                 );
             }
 
 
             
-            function ChatMessages() {
-               const array  =   React.useState([ // our data => array of objects 
-                      {message : "Hello chatbot" , sender : "user" , id : "id01"},
-                      {message : "Hello , how can I help you today" , sender : "robot" , id : "id02"},
-                      {message : "Can you get me today date?" , sender : "user" , id : "id03"},
-                      {message : "Today is 29 October" , sender : "robot" , id : "id04"}
-                    ]);
+            function ChatMessages({chatMessages}) {
+           
+              // const [chatMessages , setChatMessages]  =   React.useState([ // our data => array of objects , lifting it up so all components can use it 
+              //         {message : "Hello chatbot" , sender : "user" , id : "id01"},
+              //         {message : "Hello , how can I help you today" , sender : "robot" , id : "id02"},
+              //         {message : "Can you get me today date?" , sender : "user" , id : "id03"},
+              //         {message : "Today is 29 October" , sender : "robot" , id : "id04"}
+              //       ]);
 
-                const chatMessages = array[0] // the current value of chatmessages (the current date)
-                 const setChateMessages = array[1]     // updater function , returns funciton  
+                // const chatMessages = array[0] // the current value of chatmessages (the current date)
+                //  const setChateMessages = array[1]     // updater function , returns funciton  
+                // const [chateMessages , setChatMessages] = array ; 
 
 
 
               //  const chatMessages = ;
 
-                 function sendMessage() {
-                            // chatMessages.push({
-                            //   message : "test" , sender : "user" , id : crypto.randomUUID()
-                            // });
+                //  function sendMessage() { for practice
+                //             // chatMessages.push({
+                //             //   message : "test" , sender : "user" , id : crypto.randomUUID()
+                //             // });
 
-                            setChateMessages([
+                //             setChateMessages([
 
-                            ...chatMessages , 
-                            {
-                              message : "test" , sender : "user" , id : crypto.randomUUID()
-                            }
-                            ]);
-                            console.log(chatMessages);
+                //             ...chatMessages , 
+                //             {
+                //               message : "test" , sender : "user" , id : crypto.randomUUID()
+                //             }
+                //             ]);
+                //             console.log(chatMessages);
                     
-                  }
+                //   }
 
                     return ( 
                       <>
-                      <button onClick = {sendMessage}>message</button>
                        { chatMessages.map((chatMessage) => {
                          return (
                          <ChatMessage message = {chatMessage.message} sender = {chatMessage.sender} key = {chatMessage.id} />
@@ -154,8 +179,16 @@
 
                     );
             }
+           
             function App(){
                    
+
+                  const [chatMessages , setChatMessages]  =   React.useState([ // our data => array of objects , lifting it up so all components can use it 
+                      {message : "Hello chatbot" , sender : "user" , id : "id01"},
+                      {message : "Hello , how can I help you today" , sender : "robot" , id : "id02"},
+                      {message : "Can you get me today date?" , sender : "user" , id : "id03"},
+                      {message : "Today is 29 October" , sender : "robot" , id : "id04"}
+                    ]);
 
                     // const chatMessageComponents = chatMessages.map((chatMessage) => {
                     //   return (
@@ -165,8 +198,8 @@
 
                 return(
                   <>
-                    <ChatInput/>
-                    <ChatMessages/>
+                    <ChatInput  chatMessages = {chatMessages}  setChatMessages = {setChatMessages} />
+                    <ChatMessages chatMessages = {chatMessages} />
 
                 </>
               );
