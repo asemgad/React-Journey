@@ -8,6 +8,7 @@
 
     <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
     <script src="https://unpkg.com/supersimpledev/react.js"></script> <!-- for websites and mobile phones -->
+    <script src="https://unpkg.com/supersimpledev/chatbot.js"></script> <!-- for websites and mobile phones -->
     <script src="https://unpkg.com/supersimpledev/react-dom.js"></script> <!-- for websites -->
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
@@ -110,24 +111,44 @@
                 function SaveInputText(e) {
                   setInputText(e.target.value);// so when this value changes the inputText will be udpated to the new data 
                   // so setInputText is a func that upates inputText
+                     
                   
                 }
                 function sendMessage() {
-                  console.log(inputText )
+                  console.log(inputText)
 
-                  setChateMessages([
+                  const newChatMessages = [
 
                             ...chatMessages , 
                             {
                               message : inputText , sender : "user" , id : crypto.randomUUID()
                             }
-                            ]);
+                            ]
+ 
+                 setChatMessages(newChatMessages);
+
+                            const response =    Chatbot.getResponse(inputText)
+                              setChatMessages([
+
+                            ...newChatMessages , 
+                            {
+                              message : response , sender : "robot" , id : crypto.randomUUID()
+                            }
+                            ]);// here we will face a problem that robot meesage only will be shown so we will reserve 
+                            // the user meessage in a var then we will add to it 
+
+                            console.log(response);
+
+
+
+                             setInputText(''); // to make it empty after click 
+
                 }
 
                 return ( // return one element and the ( needs to be with return at the same line
                 
                   <>
-                  <input placeholder ="send a message to chatbot" size ="30" type="text" onChange = {SaveInputText}/>
+                  <input placeholder ="send a message to chatbot" value = {inputText}  size ="30" type="text" onChange = {SaveInputText}/>
                   <button onClick = {sendMessage}>send</button>
                   </>    
                 );
