@@ -77,3 +77,14 @@ Main.jsx -> sets up the react
 strict mode -> gives us some additonal checks and warinings when developing our app 
 
 we need to seprate each compnent with its JSX and its CSS
+
+1- when start any react project : create vite then the rest  
+
+gitIgnore : the files we do not need to track 
+
+Routing : resue HTml code -> npm install react-router
+1- BrowserROuter in main , and 
+2- Routes in app -> routes tells react all the pages that are in our website 
+route -> adds a page to our website - path : url of the page and will be after 5137/  , element : compnent to display  
+
+The index.html which is shared beetween all pages called single page applicaiton 

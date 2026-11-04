@@ -123,9 +123,9 @@ import './App.css' // vite lets us import any type of files
                    
 
                   const [chatMessages , setChatMessages]  =   useState(
-                    [ // we do not need to write React .useState because we have imported useState from react
+                    // we do not need to write React .useState because we have imported useState from react
                      localStorage.getItem("messages") ? JSON.parse(localStorage.getItem("messages")) : []
-                    ]);
+                    );
 
                     // const chatMessageComponents = chatMessages.map((chatMessage) => {
                     //   return (
