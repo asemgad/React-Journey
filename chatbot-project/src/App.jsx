@@ -1,6 +1,6 @@
 import { useState  } from 'react'
-import { ChatMessages  } from './Components/ChatMessages.jsx'
-import { ChatInput  } from './Components/ChatInput.jsx'
+import { ChatMessages } from "./assets/Components/ChatMessages.jsx";
+import { ChatInput } from "./assets/Components/ChatInput.jsx";
 import './App.css' // vite lets us import any type of files
 
 // function App() {
@@ -122,11 +122,9 @@ import './App.css' // vite lets us import any type of files
             function App(){
                    
 
-                  const [chatMessages , setChatMessages]  =   useState([ // we do not need to write React .useState because we have imported useState from react
-                      {message : "Hello chatbot" , sender : "user" , id : "id01"},
-                      {message : "Hello , how can I help you today" , sender : "robot" , id : "id02"},
-                      {message : "Can you get me today date?" , sender : "user" , id : "id03"},
-                      {message : "Today is 29 October" , sender : "robot" , id : "id04"}
+                  const [chatMessages , setChatMessages]  =   useState(
+                    [ // we do not need to write React .useState because we have imported useState from react
+                     localStorage.getItem("messages") ? JSON.parse(localStorage.getItem("messages")) : []
                     ]);
 
                     // const chatMessageComponents = chatMessages.map((chatMessage) => {

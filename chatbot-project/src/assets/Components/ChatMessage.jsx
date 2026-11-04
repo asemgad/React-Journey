@@ -1,7 +1,5 @@
-import RobotProfleImage from './assets/robot.jpeg'
-import UserProfleImage from './assets/image1.jpeg'
-
-
+import RobotProfleImage from "../robot.jpeg";
+import UserProfleImage from "../image1.jpeg";
  export  function ChatMessage({message , sender}) 
           {
          
