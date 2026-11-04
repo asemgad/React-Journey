@@ -63,6 +63,7 @@ public folder -> conatins files that should be avail to the public (we can acces
 
 eslint : highlights problems in our javascript code  
 
+npm create-vite@version => we need ot use it on our teact projct 
 vite is a server and it is the replacment for live server 
 Vite : tool that we used to set up this project 
 -- helps us to build the website 
@@ -74,3 +75,5 @@ Ctrl c to exit or stop vite to write the  command line
 Main.jsx -> sets up the react 
 
 strict mode -> gives us some additonal checks and warinings when developing our app 
+
+we need to seprate each compnent with its JSX and its CSS

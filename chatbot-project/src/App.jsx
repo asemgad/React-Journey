@@ -1,7 +1,6 @@
-import { useState , useRef , useEffect } from 'react'
-import {Chatbot} from 'supersimpledev'
-import RobotProfleImage from './assets/robot.jpeg'
-import UserProfleImage from './assets/image1.jpeg'
+import { useState  } from 'react'
+import { ChatMessages  } from './Components/ChatMessages.jsx'
+import { ChatInput  } from './Components/ChatInput.jsx'
 import './App.css' // vite lets us import any type of files
 
 // function App() {
@@ -118,110 +117,6 @@ import './App.css' // vite lets us import any type of files
 //     </>
 //   )
 // }
-
-
-
-   function ChatMessage({message , sender}) 
-          {
-         
-
-            return (
-                <div>
-                  {sender === "robot" &&( 
-                    <img src={RobotProfleImage} width ="50" alt=""/>
-                  )}
-                {message}
-                  { sender ==="user" &&  <img src={UserProfleImage} width ="50" alt=""/> }
-                  
-                </div>
-
-            );
-          }
-
-
-          function ChatInput ({chatMessages , setChatMessages})
-            { 
-                  const [inputText , setInputText] = useState(''); // as the initial value will be ""
-                function SaveInputText(e) {
-                  setInputText(e.target.value);// so when this value changes the inputText will be udpated to the new data 
-                  // so setInputText is a func that upates inputText
-                     
-                  
-                }
-                function sendMessage() {
-                  console.log(inputText)
-
-                  const newChatMessages = [
-
-                            ...chatMessages , 
-                            {
-                              message : inputText , sender : "user" , id : crypto.randomUUID()
-                            }
-                            ]
- 
-                 setChatMessages(newChatMessages);
-
-                            const response =    Chatbot.getResponse(inputText)
-                              setChatMessages([
-
-                            ...newChatMessages , 
-                            {
-                              message : response , sender : "robot" , id : crypto.randomUUID()
-                            }
-                            ]);
-
-                            console.log(response);
-
-
-
-                             setInputText('');  
-
-                }
-
-                return ( 
-                
-                  <>
-                  <input placeholder ="send a message to chatbot" value = {inputText}  size ="30" type="text" onChange = {SaveInputText}/>
-                  <button onClick = {sendMessage}>send</button>
-                  </>    
-                );
-            }
-
-
-            
-            function ChatMessages({chatMessages}) {
-
-              const chatMessagesRef = useRef (null);
-
-               useEffect(() => {
-                  const containerElem =  chatMessagesRef.current  ; 
-                    if (containerElem)
-                    {
-                      containerElem.scrollTop = containerElem.scrollHeight ;
-                    }
-
-                } , [chatMessages]) 
-           
-
-
-                    return ( 
-                      
-                    <div className="chat-messages" ref = {chatMessagesRef} >
-                       { chatMessages.map((chatMessage) => {
-                         return (
-                         <ChatMessage message = {chatMessage.message} sender = {chatMessage.sender} key = {chatMessage.id} />
-                       )
-                     })}
-
-                     </div>
-                     
-
-                    );
-            }
-
-
-
-
 
  
             function App(){
