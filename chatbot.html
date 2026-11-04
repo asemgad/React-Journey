@@ -2,6 +2,35 @@
 <html>
   <head>
     <title>Chatbot</title>
+
+    <style>
+  .chat-messages {
+    height: 300px;        /* limit the height */
+    overflow-y: auto;     /* scroll when the content is taller */
+  }
+
+  .check-button-on 
+  {
+
+    background-color: rgb(25 , 135, 84) ;
+    color: white;
+    height:  30px;
+    cursor: pointer;
+    padding: 5px 10px;
+        border:  none ;
+
+
+  }
+
+   .check-button-off {
+    background-color: rgb(220 , 53, 69) ;
+    color: white;
+    height:  30px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border:  none ;
+   }
+</style>
   </head>
   <body>
     <div class="js-container"></div>
@@ -63,6 +92,126 @@
 
                  )
               }
+
+              // ex 3 
+              function Know({count , setCount}) {
+
+               
+                function click()
+                {
+                  console.log("clicked")
+                  setCount(count + 1);
+                }
+
+                function ResetCounter() {
+                  setCount (0)
+                  
+                }
+
+                return(
+                  <>
+                  {count === 1 ? <button onClick= {click}>clicked {count} time </button>
+                   :  <button onClick= {click}>clicked {count} times </button> }
+
+                 
+                  </>
+                );
+                
+              }
+
+              function ClickButtons({count , setCount}) {
+
+                function ResetCounter() {
+                  setCount (0)
+                  
+                }
+                
+                return(
+                    <>
+                    <Know count = {count}  setCount = {setCount}/>
+                    <Know  count = {count}   setCount = {setCount}/>
+                     <button onClick = {ResetCounter}>Reset</button>
+                    </>
+                );
+              }
+
+                function App02() {
+
+                   const [count , setCount] = React.useState(0)
+
+                  return(
+                    <>
+                      <ClickButtons  count = {count}  setCount = {setCount} />
+                    </>
+                );
+                  
+                }
+
+
+
+              // ex04
+
+            function Mybutton() {
+
+               const [buttonOn , setBottonOn] = React.useState(true)
+
+              function ChangeButtonState() {
+
+                
+                  if (buttonOn === true) {
+                   setBottonOn(false)   
+                  }
+                  else {
+                    setBottonOn(true)
+                  }
+               
+                   console.log(buttonOn)
+
+                
+              }
+              return(
+                  <div >
+                    
+                   {buttonOn === true ? <button className = "check-button-on" onClick = {ChangeButtonState} >ON</button> : <button className = "check-button-off" onClick = {ChangeButtonState} >OFF</button> } 
+                    </div>
+              );
+              
+            }
+
+            function App04() {
+
+              return(
+                <Mybutton/>
+              );
+              
+            }
+
+            
+            // Ex05 
+            function SaveTime() {
+
+              const [currentTime , setCurrentTime] = React.useState(dayjs().format('HH:mm:ss'))
+
+              React.useEffect(() => {
+                setInterval(() => {
+                  setCurrentTime(dayjs().format("HH:mm:ss"));
+                  
+                }, 1000);
+              })
+
+              return(
+                <>
+
+                <p>{currentTime}</p>
+
+                </>
+
+              );
+              
+            }
+
+
+
 
 
 
@@ -157,7 +306,19 @@
 
             
             function ChatMessages({chatMessages}) {
+
+              const chatMessagesRef = React.useRef (null); // as we have added this ref to the div element so nwo this ref has the html element 
+
+                React.useEffect(() => {
+                  const containerElem =  chatMessagesRef.current  ; 
+                    if (containerElem)
+                    {
+                      containerElem.scrollTop = containerElem.scrollHeight ;
+                    }
+
+                } , [chatMessages]) // will be impleneted when chatMessages changes , called dependncy array , control when useEfeect runs
            
+
               // const [chatMessages , setChatMessages]  =   React.useState([ // our data => array of objects , lifting it up so all components can use it 
               //         {message : "Hello chatbot" , sender : "user" , id : "id01"},
               //         {message : "Hello , how can I help you today" , sender : "robot" , id : "id02"},
@@ -168,8 +329,6 @@
                 // const chatMessages = array[0] // the current value of chatmessages (the current date)
                 //  const setChateMessages = array[1]     // updater function , returns funciton  
                 // const [chateMessages , setChatMessages] = array ; 
-
-
 
               //  const chatMessages = ;
 
@@ -190,13 +349,16 @@
                 //   }
 
                     return ( 
-                      <>
+                      
+                    <div className="chat-messages" ref = {chatMessagesRef} >
                        { chatMessages.map((chatMessage) => {
                          return (
                          <ChatMessage message = {chatMessage.message} sender = {chatMessage.sender} key = {chatMessage.id} />
                        )
                      })}
-                     </>
+
+                     </div>
+                     
 
                     );
             }
@@ -234,7 +396,7 @@
 
 
       const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render(<App/>); // anything in render will be dispalyed in the container
+      ReactDOM.createRoot(container).render(<SaveTime/>); // anything in render will be dispalyed in the container
     </script>
   </body>
 </html>

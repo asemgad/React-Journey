@@ -33,3 +33,44 @@ state to save data that chanes over time
 in react we should not modify the date directly , we should create a copy and then modify the copy  
 
 lifting the state up : share state between multiple components
+
+useeffect ; run some code after the component is created or updated 
+
+useRef : automatically save an HTMl element from the component , container with special react features 
+
+
+Written as	Runs
+useEffect(fn)	After every render (rarely wanted)
+useEffect(fn, [])	Once, after the first render
+useEffect(fn, [count])	After the first render, and whenever count changes
+
+// ls , cd .. the outer file , 
+
+node -> let us run js code outside of a browser
+
+npm -> node package library , package -> external library 
+let us install external libraries into our project 
+npm install supersimpledev
+
+some packages need to be downloaded then run a command 
+we can do the 2 steps at once with npx
+@ = use a specifc version of the package 
+
+after installing the create-vite , npm install to install the needed packages for this one 
+npm run dev -> start up our new react website
+
+public folder -> conatins files that should be avail to the public (we can access it using URL )
+
+eslint : highlights problems in our javascript code  
+
+vite is a server and it is the replacment for live server 
+Vite : tool that we used to set up this project 
+-- helps us to build the website 
+-- creates the server 
+
+Ctrl c to exit or stop vite to write the  command line 
+
+
+Main.jsx -> sets up the react 
+
+strict mode -> gives us some additonal checks and warinings when developing our app 
