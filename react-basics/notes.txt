@@ -88,3 +88,5 @@ Routing : resue HTml code -> npm install react-router
 route -> adds a page to our website - path : url of the page and will be after 5137/  , element : compnent to display  
 
 The / which is shared beetween all pages called single page applicaiton 
+
+Link : go to another page without reloading -> a => Link && href => to 
