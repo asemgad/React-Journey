@@ -90,3 +90,4 @@ route -> adds a page to our website - path : url of the page and will be after 5
 The / which is shared beetween all pages called single page applicaiton 
 
 Link : go to another page without reloading -> a => Link && href => to 
+git is insensitive , which means header.css and Header.css are same

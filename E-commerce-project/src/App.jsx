@@ -1,9 +1,10 @@
-import { HomePage } from './Pages/HomePage.jsx'
-import { CheckoutPage } from './Pages/CheckoutPage.jsx'
+import { HomePage } from './Pages/Home/HomePage.jsx'
+import { CheckoutPage } from './Pages/Checkout/CheckoutPage.jsx'
 import { Routes, Route } from 'react-router'
 
 import './App.css'
-import { OrdersPage } from './Pages/OrdersPage.jsx'
+import { OrdersPage } from './Pages/Orders/OrdersPage.jsx'
+import { TrackingPage } from './Pages/Tracking/TrackingPage.jsx'
 
 function App() { // path = "/" = index
 
@@ -20,6 +21,7 @@ function App() { // path = "/" = index
         <Route index element={<HomePage />} />
         <Route path="checkout" element={<CheckoutPage />} />
         <Route path="orders" element={<OrdersPage />} />
+        <Route path="tracking" element={<TrackingPage />} />
       </Routes>
 
     </>
