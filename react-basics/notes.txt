@@ -87,4 +87,4 @@ Routing : resue HTml code -> npm install react-router
 2- Routes in app -> routes tells react all the pages that are in our website 
 route -> adds a page to our website - path : url of the page and will be after 5137/  , element : compnent to display  
 
-The index.html which is shared beetween all pages called single page applicaiton 
+The / which is shared beetween all pages called single page applicaiton 
