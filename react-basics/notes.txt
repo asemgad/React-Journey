@@ -93,3 +93,6 @@ Link : go to another page without reloading -> a => Link && href => to
 git is insensitive , which means header.css and Header.css are same
 
 after instalinng the backeedn , npm install , then npm run dev
+
+Asynchronous code : code that does not finish right away 
+fetch : returns a promise  and promise let us wait for async code to finsish 
