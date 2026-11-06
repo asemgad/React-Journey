@@ -96,3 +96,5 @@ after instalinng the backeedn , npm install , then npm run dev
 
 Asynchronous code : code that does not finish right away 
 fetch : returns a promise  and promise let us wait for async code to finsish 
+
+axios : is a cleaner way to make requests to the backend 
