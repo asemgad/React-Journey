@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router'
 import './App.css'
 import { OrdersPage } from './Pages/Orders/OrdersPage.jsx'
 import { TrackingPage } from './Pages/Tracking/TrackingPage.jsx'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 function App() { // path = "/" = index
@@ -13,11 +13,11 @@ function App() { // path = "/" = index
     const [cart , setCart] = useState([]);
 
     useEffect( () => {
-      axios.get("http://localhost:3000/api/cart-items")
+      axios.get("http://localhost:3000/api/cart-items?expand=product")
       .then((response) => {
         setCart(response.data);
       })
-    })
+    } , [])
 
   return (
     <>

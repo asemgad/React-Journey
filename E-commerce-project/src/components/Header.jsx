@@ -8,7 +8,7 @@ import {Link} from "react-router"
   let totalQuantity = 0 ; 
 
   cart.forEach(element => {
-      totalQuantity += element
+      totalQuantity += element.quantity;
   });
     return (
 
