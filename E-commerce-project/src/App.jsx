@@ -5,8 +5,19 @@ import { Routes, Route } from 'react-router'
 import './App.css'
 import { OrdersPage } from './Pages/Orders/OrdersPage.jsx'
 import { TrackingPage } from './Pages/Tracking/TrackingPage.jsx'
+import { useEffect } from 'react'
+import axios from 'axios'
 
 function App() { // path = "/" = index
+
+    const [cart , setCart] = useState([]);
+
+    useEffect( () => {
+      axios.get("http://localhost:3000/api/cart-items")
+      .then((response) => {
+        setCart(response.data);
+      })
+    })
 
   return (
     <>
@@ -18,8 +29,8 @@ function App() { // path = "/" = index
     </Routes> to use the index we need to make it self closing tag  */}
 
       <Routes>
-        <Route index element={<HomePage />} />
-        <Route path="checkout" element={<CheckoutPage />} />
+        <Route index element={<HomePage cart = {cart} />} />
+        <Route path="checkout" element={<CheckoutPage cart = {cart} />} />
         <Route path="orders" element={<OrdersPage />} />
         <Route path="tracking" element={<TrackingPage />} />
       </Routes>
