@@ -2,12 +2,12 @@ import axios from 'axios';
 import {useState , useEffect} from 'react';
 import './HomePage.css';
 import { Header } from '../../components/Header.jsx';
-import {products} from '../../../Starting_Code/data/products.js';
 
 
 export function HomePage() {
 
   const [products , setProducts] = useState([]);
+  const [cart , setCart] = useState([]);
   
     // fetch("http://localhost:3000/api/products")
     // .then((response) => {
@@ -23,6 +23,14 @@ export function HomePage() {
       .then((response) => {
         setProducts(response.data);
       })
+
+      axios.get("http://localhost:3000/api/cart-items")
+      .then((response) => {
+        setCart(response.data);
+      })
+
+
+      
     }, []);// the empty array means that the useEffect will run only once when the component is mounted, and not on every re-render. This is useful for fetching data from an API when the component is first loaded.
       
 
@@ -31,7 +39,7 @@ export function HomePage() {
 
     <>
 
-      <Header />
+      <Header cart ={cart} />
 
       <div className="home-page">
         <div className="products-grid">
