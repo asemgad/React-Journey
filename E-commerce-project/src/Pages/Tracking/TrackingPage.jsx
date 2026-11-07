@@ -1,9 +1,30 @@
 import { Header } from "../../components/Header";
 import {Link} from "react-router";
+import {useParams} from "react-router";
 import "./tracking.css";
+// import { useEffect } from "react";
+// import axios from "axios";
 
  export function TrackingPage({cart}) {
 
+  const params = useParams();
+  console.log(params)
+
+  // const {orderId , productId} = params;
+
+
+    // useEffect(() => {
+
+    //   async function GetOrderData() {
+
+    //     const reponse = await axios.get({`/api/orders/${orderId}?expand=products`});
+
+
+    //   }
+
+
+    // }, [orderId])
+  
 
 
     return (
