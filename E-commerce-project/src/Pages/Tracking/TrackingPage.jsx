@@ -26,15 +26,21 @@ import dayjs from "dayjs";
       }
       GetOrderData();
     }, [orderId])
-
-    //  const product = orders?.products.find((product) => product.id === parseInt(productId));
-    const orderProduct = orders.products.find((item) => item.productId === productId);
-     console.log(orderProduct)
-  
-
+    
      if (!orders) {
       return null;
      }
+
+
+
+
+    //  const product = orders?.products.find((product) => product.id === parseInt(productId));
+    const orderProduct = orders.products.find((item) => item.productId === productId);
+    console.log(orders)
+     console.log(orderProduct)
+
+      
+  
 
 
     return (
@@ -52,18 +58,18 @@ import dayjs from "dayjs";
         </Link>
 
         <div className="delivery-date">
-          Arriving on Monday, June 13
+          {dayjs(orderProduct.estimatedDeliveryTimeMs).format('DD/MM/YYYY')}
         </div>
 
         <div className="product-info">
-          Black and Gray Athletic Cotton Socks - 6 Pairs
+          {orderProduct.product.name}
         </div>
 
         <div className="product-info">
-          Quantity: 1
+         {orderProduct.quantity}
         </div>
 
-        <img className="product-image" src="images/products/athletic-cotton-socks-6-pairs.jpg" />
+        <img className="product-image" src={orderProduct.product.image} />
 
         <div className="progress-labels-container">
           <div className="progress-label">
