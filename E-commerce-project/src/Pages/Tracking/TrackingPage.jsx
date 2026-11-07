@@ -26,12 +26,13 @@ import dayjs from "dayjs";
       GetOrderData();
     }, [orderId])
 
-    //  const product = orders.
-    //  console.log(product)
-    console.log(orders)
+     const product = orders?.products.find((product) => product.id === parseInt(productId));
+     console.log(product)
   
 
-    
+     if (!orders) {
+      return null;
+     }
 
 
     return (
