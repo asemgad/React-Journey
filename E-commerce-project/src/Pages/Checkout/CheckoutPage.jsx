@@ -14,15 +14,31 @@ export function CheckoutPage({ cart }) {
 
   useEffect(() => {
 
-    axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
-      .then((response) => {
-        setDeliveryOptions(response.data);
-      })
+    async function GetDeliveryOptionsData() { // we need to put it into funciton as the await returns promise and the useeffect can not return promise 
+     const response = await   axios.get('/api/delivery-options?expand=estimatedDeliveryTime');
+     setDeliveryOptions(response.data)
+    };
 
-    axios.get('/api/payment-summary')
-      .then((response) => {
-        setPaymentSummary(response.data);
-      })
+
+    // axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
+    //   .then((response) => {
+    //     setDeliveryOptions(response.data);
+    //   })
+
+    // axios.get('/api/payment-summary')
+    //   .then((response) => {
+    //     setPaymentSummary(response.data);
+    //   })
+
+
+    const GetPaymentSummaryData = async function (){
+      const response = await axios.get('/api/payment-summary')
+      setPaymentSummary(response.data)
+    }
+
+
+      GetDeliveryOptionsData();
+      GetPaymentSummaryData();
   }, [])
 
 
