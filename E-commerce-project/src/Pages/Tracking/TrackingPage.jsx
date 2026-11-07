@@ -20,14 +20,16 @@ import dayjs from "dayjs";
       async function GetOrderData() {
 
       const response = await axios.get(`/api/orders/${orderId}?expand=products`);
+      
       setOrders(response.data)
 
       }
       GetOrderData();
     }, [orderId])
 
-     const product = orders?.products.find((product) => product.id === parseInt(productId));
-     console.log(product)
+    //  const product = orders?.products.find((product) => product.id === parseInt(productId));
+    const orderProduct = orders.products.find((item) => item.productId === productId);
+     console.log(orderProduct)
   
 
      if (!orders) {
