@@ -8,9 +8,18 @@ import dayjs from 'dayjs';
  export function CheckoutPage({cart}) {
 
    const [deliveryOptions , setDeliveryOptions] = useState([])
+  //  const [PaymentSummary , setPaymentSummary ] = useState([])
+
+
 
    useEffect (() => {
+
       axios.get ('/api/delivery-options?expand=estimatedDeliveryTime')
+      .then((response) => {
+        setDeliveryOptions(response.data);
+      })
+
+      axios.get ('/api/payment-summary')
       .then((response) => {
         setDeliveryOptions(response.data);
       })
@@ -53,7 +62,7 @@ import dayjs from 'dayjs';
             {cart.map((item) => {
 
 
-                const deliveryOption = deliveryOptions.find((option) => option.id === item.deliveryOptionId);
+                const deliveryOption = deliveryOptions?.find((option) => option.id === item.deliveryOptionId);
               return (
                         
                   <div key={item.productId} className="cart-item-container">
@@ -97,7 +106,7 @@ import dayjs from 'dayjs';
 
                   return (
                       <div key = {option.id} className="delivery-option">
-                  <input type="radio" checked = {option.id === cart.deliveryOptionId} 
+                  <input type="radio"  
                     className="delivery-option-input"
                     name={ `delivery-option-${cart.productId}`}  />
                   <div>
