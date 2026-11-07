@@ -2,7 +2,7 @@ import { Header } from "../../components/Header";
 import {Link} from "react-router";
 import "./tracking.css";
 
- export function TrackingPage() {
+ export function TrackingPage({cart}) {
 
 
 
@@ -12,7 +12,7 @@ import "./tracking.css";
          <title>Tracking</title>
         
 
-        <Header/>
+        <Header cart={cart} />
         
         <div className="tracking-page">
       <div className="order-tracking">
