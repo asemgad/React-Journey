@@ -3,6 +3,7 @@ import './CheckoutHeader.css'
 import './CheckoutPage.css'
 import axios from 'axios';
 import { OrderSummary } from './OrderSummary';
+import { useNavigate } from 'react-router';
 
 
 export function CheckoutPage({ cart , loadCart }) {
@@ -10,6 +11,14 @@ export function CheckoutPage({ cart , loadCart }) {
   const [deliveryOptions, setDeliveryOptions] = useState([])
   const [PaymentSummary, setPaymentSummary] = useState([])
 
+  const navigate = useNavigate()
+
+  async function createOrder() {
+   await axios.post('/api/orders')
+    await loadCart();
+    navigate('/orders');
+    
+  }
 
 
   useEffect(() => {
@@ -112,7 +121,7 @@ export function CheckoutPage({ cart , loadCart }) {
                   <div className="payment-summary-money">{(PaymentSummary.totalCostCents / 100).toFixed(2)}</div>
                 </div>
 
-                <button className="place-order-button button-primary">
+                <button onClick={createOrder}  className="place-order-button button-primary">
                   Place your order
                 </button>
               </>

@@ -100,3 +100,5 @@ fetch : returns a promise  and promise let us wait for async code to finsish
 axios : is a cleaner way to make requests to the backend 
 
 we need to put the fetch  into funciton as the await returns promise and the useeffect can not return promise 
+
+useNavigate let us go to another page in the app 
