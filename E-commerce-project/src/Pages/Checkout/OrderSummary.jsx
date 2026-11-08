@@ -1,7 +1,17 @@
 import axios from "axios";
 import dayjs from "dayjs";
+import { useState } from "react";
 
 export function OrderSummary({cart , deliveryOptions , loadCart}) {
+
+    const [quantityStatus , setQuantityStatus] = useState(false);
+
+    function UpdateQuantity ()
+    {
+
+           quantityStatus? setQuantityStatus(false) : setQuantityStatus(true)
+           console.log(quantityStatus)
+    };
 
     return (
 
@@ -37,10 +47,12 @@ export function OrderSummary({cart , deliveryOptions , loadCart}) {
                                     {(item.product.priceCents / 100).toFixed(2)}
                                 </div>
                                 <div className="product-quantity">
+
+                                    <input style={{opacity:quantityStatus? 1 : 0}} className="quantity-input" type="text" />
                                     <span>
                                         Quantity: <span className="quantity-label">{item.quantity}</span>
                                     </span>
-                                    <span className="update-quantity-link link-primary">
+                                    <span onClick={UpdateQuantity} className="update-quantity-link link-primary">
                                         Update
                                     </span>
                                     <span onClick={deleteCartItem} className="delete-quantity-link link-primary">

@@ -20,6 +20,11 @@
   margin-bottom: 18px;
 }
 
+.quantity-input{
+  width: 50px;
+  opacity: 0;
+}
+
 .checkout-page .checkout-grid {
   display: grid;
   /* Here, 1fr means the first column will take

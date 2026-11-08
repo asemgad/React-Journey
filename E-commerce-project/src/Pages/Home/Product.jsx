@@ -6,7 +6,19 @@ import { useState } from "react";
 export function Product({product , loadCart  }) {
 
 
-        const [quantity , setQuantity] = useState(1)
+        const [quantity , setQuantity] = useState(1);
+         const [addedToCart , setAddedToCart] = useState(false);
+
+         const addToCart = () =>
+         {
+             setAddedToCart(true)
+            setTimeout(() => {
+                 setAddedToCart(false)
+            }, 2000);
+           
+
+         }
+
 
 
     return (
@@ -55,22 +67,22 @@ export function Product({product , loadCart  }) {
 
                         <div className="product-spacer"></div>
 
-                        <div className="added-to-cart">
+                        <div style={{opacity:addedToCart? 1 : 0}} className="added-to-cart">
                             <img src="images/icons/checkmark.png" />
                             Added
                         </div>
 
-                        <button className="add-to-cart-button button-primary"
+                        <button   className="add-to-cart-button button-primary"
                             onClick={async () => {
                                 await axios.post('/api/cart-items',
                                     {
                                         productId: product.id,
                                         quantity: quantity
                                     }
-
-
                                 )
                                 await loadCart()
+
+                                addToCart();
 
 
                             }}>

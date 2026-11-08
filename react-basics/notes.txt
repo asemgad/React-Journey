@@ -102,3 +102,13 @@ axios : is a cleaner way to make requests to the backend
 we need to put the fetch  into funciton as the await returns promise and the useeffect can not return promise 
 
 useNavigate let us go to another page in the app 
+
+Automated tests : using code to test our code 
+npm package for test : Vitest
+
+npm install --save-dev vitest , --save-dev only for development
+
+Unit test : test 1 unit (1piece) of the code 
+it : create a test 
+in anther termainal : npx vitest
+describe : group tests together 
