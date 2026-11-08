@@ -112,3 +112,30 @@ Unit test : test 1 unit (1piece) of the code
 it : create a test 
 in anther termainal : npx vitest
 describe : group tests together 
+
+integration test : test multiple units of code working together
+rended in testing : renders a component in a fake webPage
+mock create a fake function for testing 
+
+vi.fn() : creates a fake  fucntion that does not do anything 
+screen : check the fake web page 
+
+
+
+
+Deployoing ; how to put a react app on the internet 
+AWS : Amazon web services , bigges serive for deploying
+A collection of seriveces to put stuff on the internet 
+
+EC2 : rent a computer for AWS the replacment of the backend 
+ ->> rent a computer from AWS infrastructure as a Service (Iaas)
+
+ EC2 is just gives us a computer . we still need to : install nodeJs , connect to the internet , upload your code 
+
+ elastic beanstalk : uses EC2 to rend a computer and installs all the software we need 
+ so he does all the software setup for us 
+ This called platform as a Service (PaaS)
+
+ Role : give elastic beanstalk permission to use other seriveces in AWS 
+
+ npm rum build need before deplyoment do turn our jsx to js with dist

@@ -1,5 +1,5 @@
 import {it , expect , describe} from 'vitest'
-import formatMoney from './money'
+import {formatMoney} from './money'
 
 
 describe('formatMoney' , () => {
